@@ -33,6 +33,13 @@ const handleDateAPI = (req, res) => {
     })
   }
 
+  if(new Date(unixtime)){
+    return res.json({
+      'unix': new Date(unixtime).getTime(),
+      'utc': new Date('unixtime').toUTCString()
+    })
+  }
+
   return res.json({"error": "Invalid Date"});
 }
 
