@@ -24,6 +24,7 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/:unixtime", handleDateAPI);
+app.get("/api", handleDateAPI);
 
 // Listen on port set in environment variable or default to 3000
 const listener = app.listen(process.env.PORT || 3000, function () {
