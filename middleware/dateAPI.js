@@ -23,24 +23,19 @@ const handleDateAPI = (req, res) => {
       'utc': new Date(unix).toUTCString()
     })
   }
+  
+  const dateProvided = new Date(unixtime);
 
-  if(checkValidDate.test(unixtime)){
-    const dateProvided = new Date(`${unixtime}T00:00:00+0000`);
+  if(dateProvided.toString() === "Invalid Date"){
 
+    return res.json({"error": "Invalid Date"});
+  } else {
     return res.json({
-      'unix': dateProvided.getTime(),
-      'utc': dateProvided.toUTCString()
+      "unix": dateProvided.getTime(),
+      "utc": dateProvided.toUTCString()
     })
   }
-
-  if(new Date(unixtime)){
-    return res.json({
-      'unix': new Date(unixtime).getTime(),
-      'utc': new Date('unixtime').toUTCString()
-    })
-  }
-
-  return res.json({"error": "Invalid Date"});
+  
 }
 
 module.exports = { handleDateAPI };
